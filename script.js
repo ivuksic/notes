@@ -17,23 +17,8 @@ createBtn.addEventListener("click", () => {
   inputBox.className = "input-box";
   inputBox.setAttribute("contenteditable", "true");
   img.src = "images/delete.png";
-  img.addEventListener("mousedown", (event) => {
-    event.stopPropagation();
-  });
-
-  inputBox.addEventListener("keydown", (event) => {
-    if (event.key === "Backspace" && isCreateAtStart(inputBox)) {
-      event.preventDefault();
-    }
-  });
-
   notesContainer.appendChild(inputBox).appendChild(img);
 });
-
-function isCreateAtStart(element) {
-  const selection = window.getSelection();
-  return selection.rangeCount > 0 && selection.getRangeAt(0).startOffset === 0;
-}
 
 notesContainer.addEventListener("click", function (e) {
   if (e.target.tagName === "IMG") {
